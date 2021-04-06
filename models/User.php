@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\classes\SessionUnhide;
+use phpDocumentor\Reflection\Types\Boolean;
 use Yii;
 use yii\db\ActiveQuery;
 
@@ -107,7 +107,7 @@ class User extends \yii\db\ActiveRecord
         $online->save();
     }
 
-    public function setHand(bool $isUp)
+    public function setHand($isUp)
     {
         $hand = $this->getState()->one();
         $hand->is_hand_raised = $isUp;

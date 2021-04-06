@@ -32,4 +32,8 @@ RoomAsset::register($this);
 <script>
     var USER_ID = <?= Yii::$app->session->get('user_id') ?>;
     var URL_SITE_MEMBERS = '<?= Url::to(['site/members']); ?>';
+    var USER_FIRST_NAME = '<?= Html::encode($user->first_name) ?>';
+    var USER_LAST_NAME = '<?= Html::encode($user->last_name) ?>';
+    var USER_EMAIL = '<?= Html::encode($user->email) ?>';
+    var USER_HAND = '<?= Html::encode($user->getIsHandUp()) ?>';
 </script>

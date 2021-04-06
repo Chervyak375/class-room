@@ -16,10 +16,10 @@ ws.onopen = function () {
     console.log('opened');
     publish('user_online', JSON.stringify({
             id: USER_ID,
-            firstName: '<?= Html::encode($user->first_name) ?>',
-            lastName: '<?= Html::encode($user->last_name) ?>',
-            email: '<?= Html::encode($user->email) ?>',
-            isHandRaised: '<?= Html::encode($user->getIsHandUp()) ?>',
+            firstName: USER_FIRST_NAME,
+            lastName: USER_LAST_NAME,
+            email: USER_EMAIL,
+            isHandRaised: USER_HAND,
             online: true,
         })
     );

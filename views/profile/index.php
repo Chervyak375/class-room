@@ -58,8 +58,7 @@ ActiveForm::end();
     <script>
         $(document).ready(function () {
             $(".modal-backdrop.fade.in").remove();
-            //$('#editProfile').modal('show');
-            if (<?= $success ?>) {
+            if (<?= json_encode($success) ?>) {
                 publish('user_profile_updated', JSON.stringify({
                         id: <?= Yii::$app->session->get('user_id') ?>,
                         firstName: '<?= Html::encode($user->first_name) ?>',
@@ -67,6 +66,8 @@ ActiveForm::end();
                         email: '<?= Html::encode($user->email) ?>',
                     })
                 );
+            } else {
+                $('#editProfile').modal('show');
             }
         });
     </script>

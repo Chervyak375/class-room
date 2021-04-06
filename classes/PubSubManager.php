@@ -50,7 +50,6 @@ class PubSubManager {
                         /**
                          * @var ConnectionInterface $subscriber
                          */
-                        echo 'SEND!';
                         $subscriber->send(json_encode([
                             'channel' => $channelName,
                             'message' => $channelObj['message'],
@@ -69,7 +68,7 @@ class PubSubManager {
 
     protected function execHandler($channelName)
     {
-        echo 'GO TO EXET: ' . $channelName . "\n";
+        //echo 'GO TO EXET: ' . $channelName . "\n";
         $channelMessage = $this->channels[$channelName]['message'];
         $this->channels[$channelName]['handler']($channelMessage);
     }
