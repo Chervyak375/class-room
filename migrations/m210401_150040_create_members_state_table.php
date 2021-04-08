@@ -12,6 +12,7 @@ class m210401_150040_create_members_state_table extends Migration
      */
     public function safeUp()
     {
+        sleep(5);
         $this->createTable('{{%members_state}}', [
             'id' => $this->primaryKey(),
             'member_id' => \yii\db\Schema::TYPE_INTEGER,

@@ -3,6 +3,10 @@ Class Room
 
 Тестовый проект: класс со студентами.
 
+#Требования
+
+ - Docker
+
 #Установка
 
  **Клонирование**
@@ -10,41 +14,53 @@ Class Room
 ```bash
 $> git clone git@github.com:Chervyak375/class-room.git
 ```
- **Обновление зависимостей**
+
+или [**скачать репозиторий и распаковать**](https://github.com/Chervyak375/class-room/archive/refs/heads/master.zip)
+
+ **Создание докер контейнеров**<br>
+ *_Открыть командную строку в папку проекта!_*
 
 ```bash
-$> composer install
+$> docker-compose build
 ```
+
+ **Запуск докер контейнеров**<br>
+
+```bash
+$> docker-compose up
+```
+
+*_Дождаться загрузки всех контейнеров!_*<br>
+*_(Должна появиться строка с текстом:_* "ready for connections"*_)_*
+![containers_ready](https://i.ibb.co/pRBgqTw/image.png)
+
+ **Обновление зависимостей**<br>
+*_Открыть новую командную строку в папке проекта!_*
+
+```bash
+$> docker exec -ti php sh -c "php /usr/local/bin/composer.phar install"
+```
+
  **Применение миграций**
  
 ```bash
-$> yii migrate
+$> docker exec -ti php sh -c "./yii migrate"
 ```
+
+  **WebSocket**<br>
+ Запуск WebSocket сервера.<br>
+  *_Открыть новую командную строку в папке проекта!_*
+ ```bash
+ $> docker exec -ti server sh -c "./yii server/start"
+ ```
  
 #Конфигурация
 
  **MySQL**<br>
-В файле конфигурации ***config/db.php*** указать данных подключения:
-
-```php
-'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=127.0.0.1;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '',
-    'charset' => 'utf8',
-```
+В файле конфигурации ***config/db.php*** указать данных подключения для докер контейнера.
 
  **Redis**<br>
-В файле конфигурации ***config/redis.php*** указать данных подключения:
-
-```php
-'redis' => [
-            'hostname' => 'redis-10893.c135.eu-central-1-1.ec2.cloud.redislabs.com',
-            'port' => 10893,
-            'password' => "PASSWORD",
-            'database' => 0,
-        ],
-```
+В файле конфигурации ***config/redis.php*** указать данных подключения внешней бд.
 
  **Cookie**<br>
 Вставьте секретный ключ в ***config/web.php*** (если он пуст) - это требуется для проверки файлов cookie
@@ -54,8 +70,18 @@ $> yii migrate
         ],
 ```
 
- **WebSocket**<br>
-Запуск WebSocket сервера. Порт по умолчанию *3012*.
-```bash
-$> yii server/start [port]
-```
+#Использование
+
+Сайт расположен на **localhost:8088**
+
+#Описание
+
+**Видео**
+
+![screenshot_1](https://s4.gifyu.com/images/2021-04-08-07-26-30-1.gif)
+
+**Скриншоты**
+
+![screenshot_1](https://i.ibb.co/wY38wRS/image.png)
+# 
+![screenshot_2](https://i.ibb.co/FHC4zCG/image.png)

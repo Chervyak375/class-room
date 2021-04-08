@@ -42,17 +42,12 @@ class RoomServer extends WebSocketServer
             foreach ($users as $user)
             {
                 $user->setOnline(false);
-                echo "1234DS\n";
                 $user->setHand(false);
             }
         });
         $this->on(self::EVENT_CLIENT_ERROR, function (WSClientErrorEvent $e) {
             echo "ERROR!\n";
-            echo $e->exception->getMessage();
-            echo "DB ACTIVE: " . \Yii::$app->db->isActive . "\n";
-            \Yii::$app->db->open();
-//           $this->stop();
-//           $this->start();
+            echo $e->exception->getMessage() . "\n";
         });
         $this->on(self::EVENT_CLIENT_MESSAGE, function (WSClientEvent $e) {
             $from = $e->client;

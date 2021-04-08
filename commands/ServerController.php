@@ -11,12 +11,17 @@ class ServerController extends Controller
 {
     public function actionStart($port = 3012)
     {
+        //sleep(5);
         $server = new RoomServer();
         $server->port = $port;
 
         $server->on(WebSocketServer::EVENT_WEBSOCKET_OPEN_ERROR, function($e) use($server) {
             echo "Error opening port " . $server->port . "\n";
-            $server->port += 1; //Try next port to open
+            /**
+             * @var \Exception $exp
+             */
+            $exp = $e->exception . "\n";
+            echo $exp->getMessage();
             $server->start();
         });
 

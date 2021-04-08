@@ -27,7 +27,7 @@ RoomAsset::register($this);
 
 </div>
 
-<?= $this->render('..\profile\index', ['model' => $model]); ?>
+<?= $this->render('../profile/index', ['model' => $model]); ?>
 
 <script>
     var USER_ID = <?= Yii::$app->session->get('user_id') ?>;
