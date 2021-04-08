@@ -44,7 +44,7 @@ $> docker exec -ti php sh -c "php /usr/local/bin/composer.phar install"
  **Применение миграций**
  
 ```bash
-$> docker exec -ti php sh -c "./yii migrate"
+$> docker exec -ti php sh -c "./yii migrate --interactive=0"
 ```
 
   **WebSocket**<br>
